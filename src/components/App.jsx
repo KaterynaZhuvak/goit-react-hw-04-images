@@ -21,21 +21,6 @@ export const App = () => {
   const [largeImage, setLargeImage] = useState(null);
   const [alt, setAlt] = useState(null);
 
-  const fetchImages = async () => {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(
-        `https://pixabay.com/api/?q=${input}&page=${currentPage}&key=39488984-2cdf64825ff5a66680c809fac&image_type=photo&orientation=horizontal&per_page=12`
-      );
-      setImages(prevState => [...prevState, ...data.hits]);
-      setTotalImages(data.totalHits);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const onSubmit = value => {
     setInput(value);
     setImages([]);
@@ -50,6 +35,22 @@ export const App = () => {
     if (!input) {
       return;
     }
+
+    const fetchImages = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(
+          `https://pixabay.com/api/?q=${input}&page=${currentPage}&key=39488984-2cdf64825ff5a66680c809fac&image_type=photo&orientation=horizontal&per_page=12`
+        );
+        setImages(prevState => [...prevState, ...data.hits]);
+        setTotalImages(data.totalHits);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchImages();
   }, [currentPage, input]);
 
