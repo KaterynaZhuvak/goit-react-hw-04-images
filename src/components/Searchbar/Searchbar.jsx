@@ -3,11 +3,6 @@ import { useState } from 'react';
 import css from './Searchbar.module.css';
 
 export const SearchBar = ({ onSubmit }) => {
-  const [_, setInput] = useState('');
-
-  const handleChange = e => {
-    setInput(e.target.value);
-  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,7 +15,6 @@ export const SearchBar = ({ onSubmit }) => {
       <form className={css.form} onSubmit={handleSubmit}>
         <input
           name="input"
-          onChange={handleChange}
           className={css.searchInput}
           type="text"
           autoComplete="off"
