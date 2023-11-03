@@ -3,7 +3,7 @@ import { useState } from 'react';
 import css from './Searchbar.module.css';
 
 export const SearchBar = ({ onSubmit }) => {
-  const [input, setInput] = useState('');
+  const [_, setInput] = useState('');
 
   const handleChange = e => {
     setInput(e.target.value);
