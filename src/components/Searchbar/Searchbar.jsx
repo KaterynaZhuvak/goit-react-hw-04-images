@@ -1,9 +1,6 @@
-import { useState } from 'react';
-
 import css from './Searchbar.module.css';
 
 export const SearchBar = ({ onSubmit }) => {
-
   const handleSubmit = e => {
     e.preventDefault();
     const input = e.currentTarget.elements.input.value;
