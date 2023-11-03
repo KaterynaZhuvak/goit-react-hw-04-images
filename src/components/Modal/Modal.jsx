@@ -16,7 +16,7 @@ export const Modal = ({ closeModal, currentImg, alt }) => {
       document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = 'auto';
     };
-  }, []);
+  }, [closeModal]);
 
   const handleOverlay = e => {
     if (e.target === e.currentTarget) {
