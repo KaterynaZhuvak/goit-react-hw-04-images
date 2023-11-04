@@ -27,9 +27,9 @@ export const App = () => {
     setCurrentPage(1);
   };
 
-  const onClick = page => {
-    setCurrentPage(page);
-  };
+  // const onClick = page => {
+  //   setCurrentPage(page);
+  // };
 
   useEffect(() => {
     if (!input) {
@@ -66,6 +66,11 @@ export const App = () => {
     setAlt(null);
   };
 
+  const handleLoadMore = () => {
+    setCurrentPage(prevState => 
+      prevState + 1
+    )};
+
   return (
     <div className={css.container}>
       <div className={css.wrapper}>
@@ -76,7 +81,7 @@ export const App = () => {
         <p>Oops, some error occured... Error message: {error}</p>
       )}
       <ImageGallery images={images} openModal={openModal} />
-      {totalImages > 12 && <Button onClick={onClick} />}
+      {totalImages > 12 && <Button onClick={handleLoadMore} />}
       {isOpen && (
         <Modal currentImg={largeImage} alt={alt} closeModal={closeModal} />
       )}
